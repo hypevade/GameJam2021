@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class CarComtroller : MonoBehaviour
 {
+    public bool GameIsStarted;
+    public bool GameIsPaused;
+    public bool GameIsOver;
+
     private float _speed = 10f;
     private Rigidbody _rb;
     [SerializeField]
