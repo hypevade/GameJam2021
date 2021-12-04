@@ -16,14 +16,12 @@ public class Generation : MonoBehaviour
     [SerializeField]
     private float frequency = 3f;
 
+    private readonly Vector3 uberCostil = new Vector3(-3.67362f, 0f, 3.64247f);
+
+
     void Start()
     {
         timer = startPause;
-        for (int i = 0; i < 3; i++)
-        {
-            var temp = Instantiate(_roadPrefab, nextPos, Quaternion.identity);
-            nextPos = temp.transform.GetChild(0).position;
-        }
     }
 
     void FixedUpdate()
@@ -38,8 +36,17 @@ public class Generation : MonoBehaviour
 
     void GenerateNext()
     {
+        var flag = Random.Range(0, 2);
+
         var temp = Instantiate(_roadPrefab, nextPos, Quaternion.identity);
-        nextPos = temp.transform.GetChild(0).position;
+        if (flag == 1)
+        {
+            temp.transform.GetChild(0).localScale = new Vector3(-1, 1, 1);
+            temp.transform.position += uberCostil;
+        }
+        else
+            temp.transform.GetChild(0).localScale = new Vector3(1, 1, 1);
+        nextPos = temp.transform.GetChild(0).GetChild(8).position;
         StartCoroutine(Delete(temp));
     }
 
