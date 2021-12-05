@@ -462,7 +462,7 @@ MonoBehaviour:
   GameIsStarted: 0
   GameIsPaused: 0
   GameIsOver: 0
-  _startSpeed: 4
+  _startSpeed: 5
 --- !u!54 &852566917
 Rigidbody:
   m_ObjectHideFlags: 0

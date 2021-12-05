@@ -24,6 +24,7 @@ public class DestroyTerrain : MonoBehaviour
         GenerateNext();
         GenerateNext();
         GenerateNext();
+        GenerateNext();
     }
 
     public void GenerateNext()
