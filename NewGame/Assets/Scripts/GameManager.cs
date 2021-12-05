@@ -17,4 +17,6 @@ public class GameManager : MonoBehaviour
     public float GameScore;
     public int CoinScore;
     public int BusterScore;
+    public bool TurnRight;
+    public bool TurnLeft;
 }

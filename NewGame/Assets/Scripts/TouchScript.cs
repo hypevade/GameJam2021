@@ -22,36 +22,40 @@ public class TouchScript : MonoBehaviour
         startButton.SetActive(false);
         StartPanelAnim.SetBool("GameStarted",true);
         gamePanel.SetActive(true);
-        gameIsStarted = true;
+        GameManager.instance.GameIsStarted = true;
     }
 
     public void StartPause()
     {
         gamePanel.SetActive(false);
         pausePanel.SetActive(true);
-        gameIsPaused = true;
+        GameManager.instance.GameIsPaused = true;
+
     }
     
     public void EndPause()
     {
         pausePanel.SetActive(false);
         gamePanel.SetActive(true);
-        gameIsPaused = false;
+        GameManager.instance.GameIsPaused = false;
     }
 
     public void Turn(bool isRightTurn)
     {
         if (isRightTurn)
         {
-            //поворот вправо
+            GameManager.instance.TurnRight = true;
         }
-        // поворот влево
+        else
+        {
+            GameManager.instance.TurnLeft = true;    
+        }
+        
     }
 
     public void GameOver()
     {
         gameOverPanel.SetActive(true);
-        gameIsOver = true;
     }
     
     public void RestartGame()
