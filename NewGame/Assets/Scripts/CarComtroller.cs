@@ -8,7 +8,8 @@ public class CarComtroller : MonoBehaviour
     public bool GameIsPaused;
     public bool GameIsOver;
 
-    private float _speed = 10f;
+
+    private float _speed;
     private Rigidbody _rb;
     [SerializeField]
     private float _startSpeed;
@@ -20,11 +21,15 @@ public class CarComtroller : MonoBehaviour
     //private Rigidbody _rightRb;
     private bool _isMoveBack;
     private Vector3 _startBackPos;
+    private float timer = 1f;
+    private float tempSpeed;
+    private float _angle = 90f;
 
 
     void Start()
     {
         _speed = _startSpeed;
+        tempSpeed = _startSpeed;
         _rb = GetComponent<Rigidbody>();
         _rb.velocity = _speed * Vector3.right;
         //_leftRb = _leftDot.GetComponent<Rigidbody>();
@@ -33,6 +38,18 @@ public class CarComtroller : MonoBehaviour
 
     void Update()
     {
+        if (!GameManager.instance.GameIsPaused && GameManager.instance.GameIsStarted && !GameManager.instance.GameIsOver)
+        {
+            _speed = tempSpeed;
+            _angle = 90f;
+        }
+        else
+        {
+            tempSpeed = _speed;
+            _speed = 0f;
+            _angle = 0f;
+        }
+
         if (transform.rotation.eulerAngles.y > 150 ||
             transform.rotation.eulerAngles.y < -80)
         {
@@ -43,20 +60,31 @@ public class CarComtroller : MonoBehaviour
         else
             _isMoveBack = false;
 
-        if (_isMoveBack && Vector3.Distance(transform.position, _startBackPos) > 1)
-        {
-            GameIsOver = true;
-        }
+        if (_isMoveBack && Vector3.Distance(transform.position, _startBackPos) > 5)
+            GameManager.instance.GameIsOver = true;
             
         if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
-            transform.Rotate(0, -90f, 0);
+            transform.Rotate(0, -_angle, 0);
             _rb.velocity = _speed * transform.forward;
         }
         if (Input.GetKeyDown(KeyCode.RightArrow))
         {
-            transform.Rotate(0, 90f, 0);
+            transform.Rotate(0, _angle, 0);
             _rb.velocity = _speed * transform.forward;
         }
+        _speed += 0.00001f;
+        _rb.velocity = _speed * transform.forward;
+    }
+
+    private void FixedUpdate()
+    {
+        if (timer < 0f)
+        {
+            timer = 1f;
+            if (!GameManager.instance.GameIsPaused && GameManager.instance.GameIsStarted && !GameManager.instance.GameIsOver)
+                GameManager.instance.GameScore += _speed;
+        }
+        timer -= Time.deltaTime;
     }
 }
