@@ -17,19 +17,38 @@ public class TouchScript : MonoBehaviour
     public Text Count;
     public Text CountShdow;
     public Text CountScoreEnd;
+    public Text CountMoney;
+    public Text CountMoneyTemp;
+    public Text CountMoneyEND;
+    
 
+    
     
 
     public bool gameIsStarted;
     public bool gameIsPaused;
     public bool gameIsOver;
 
+    private void Start()
+    {
+        CountMoney.text = PlayerPrefs.GetInt("Coins").ToString();
+    }
+
+    public void Save(int coinsCount)
+    {
+        PlayerPrefs.SetInt("Coins", PlayerPrefs.GetInt("Coins") + coinsCount);
+    }
+    
     private void Update()
     {
-        Count.text = GameManager.instance.GameScore.ToString();
-        CountShdow.text = Count.text;
         
-        
+        if (!GameManager.instance.GameIsOver && GameManager.instance.GameIsStarted && !GameManager.instance.GameIsPaused)
+        {
+            Count.text = ((int)GameManager.instance.GameScore).ToString();
+            CountShdow.text = Count.text;
+            CountMoneyTemp.text = GameManager.instance.CoinScore.ToString();
+
+        }
 
         if (GameManager.instance.GameIsOver)
         {
@@ -83,6 +102,7 @@ public class TouchScript : MonoBehaviour
     {
         gameOverPanel.SetActive(true);
         CountScoreEnd.text = Count.text;
+        CountMoneyEND.text = CountMoneyTemp.text;
 
     }
     
