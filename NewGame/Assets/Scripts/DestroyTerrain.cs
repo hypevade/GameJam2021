@@ -32,7 +32,7 @@ public class DestroyTerrain : MonoBehaviour
     public void GenerateNext()
     {
         var flag = Random.Range(0, 2);
-        var obsFlag = Random.Range(0, 5);
+        var obsFlag = Random.Range(0, 4);
 
         var temp = Instantiate(_roadPrefab, nextPos, Quaternion.identity);
         if (flag == 1)
@@ -42,7 +42,10 @@ public class DestroyTerrain : MonoBehaviour
         }
         var tempObs = Instantiate(_obstaclePrefabs[obsFlag], nextPos- uberCostil2, Quaternion.identity);
         if (flag == 1)
-            tempObs.transform.Rotate(0, 90, 0);
+            tempObs.transform.Rotate(0, 45, 0);
+        else
+            tempObs.transform.Rotate(0, -45, 0);
+
         nextPos = temp.transform.GetChild(0).GetChild(8).position;
     }
 
