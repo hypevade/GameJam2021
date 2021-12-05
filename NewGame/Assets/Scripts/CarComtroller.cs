@@ -75,7 +75,7 @@ public class CarComtroller : MonoBehaviour
             _rb.velocity = _speed * transform.forward;
             GameManager.instance.TurnRight = false;
         }
-        _speed += 0.00001f;
+        _speed += 0.01f;
         _rb.velocity = _speed * transform.forward;
     }
 
