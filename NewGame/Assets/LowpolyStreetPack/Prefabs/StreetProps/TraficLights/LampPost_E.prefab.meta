@@ -1,8 +1,12 @@
 fileFormatVersion: 2
-guid: beb0b574782a70740b06b213abb14f8b
+guid: 3581ff913e57c1d438b26cc67dce587a
+labels:
+- lamp
+- light
+- trafic
 NativeFormatImporter:
   externalObjects: {}
-  mainObjectFileID: 7400000
+  mainObjectFileID: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 

@@ -5,10 +5,12 @@ using UnityEngine.UI;
 
 public class TouchScript : MonoBehaviour
 {
-    public GameObject startPanel;
+    public GameObject startButton;
     public GameObject gamePanel;
     public GameObject pausePanel;
     public GameObject gameOverPanel;
+
+    public Animator StartPanelAnim;
 
     public bool gameIsStarted;
     public bool gameIsPaused;
@@ -17,13 +19,15 @@ public class TouchScript : MonoBehaviour
 
     public void StartGame()
     {
-        startPanel.SetActive(false);
+        startButton.SetActive(false);
+        StartPanelAnim.SetBool("GameStarted",true);
         gamePanel.SetActive(true);
         gameIsStarted = true;
     }
 
     public void StartPause()
     {
+        gamePanel.SetActive(false);
         pausePanel.SetActive(true);
         gameIsPaused = true;
     }
@@ -31,6 +35,7 @@ public class TouchScript : MonoBehaviour
     public void EndPause()
     {
         pausePanel.SetActive(false);
+        gamePanel.SetActive(true);
         gameIsPaused = false;
     }
 
