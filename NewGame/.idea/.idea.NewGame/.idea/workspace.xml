@@ -13,6 +13,9 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/../../Flappy-Bird/New Unity Project/Assets/Scripts/Pause_script.cs" root0="SKIP_HIGHLIGHTING" />
+  </component>
   <component name="ProjectId" id="21pidJ9KyOtSKYXWPAZVITuR0IS" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
@@ -63,6 +66,10 @@
       <workItem from="1638644525952" duration="521000" />
       <workItem from="1638645241930" duration="477000" />
       <workItem from="1638645819773" duration="1646000" />
+      <workItem from="1638651572596" duration="2599000" />
+      <workItem from="1638684420486" duration="906000" />
+      <workItem from="1638688298271" duration="1370000" />
+      <workItem from="1638697529620" duration="693000" />
     </task>
     <servers />
   </component>
