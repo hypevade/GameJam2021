@@ -7,9 +7,6 @@ public class Obstacle : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Player")
-        {
             GameManager.instance.GameIsOver = true;
-            Debug.Log("1111");
-        }
     }
 }

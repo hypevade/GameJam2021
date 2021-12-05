@@ -4,15 +4,12 @@ using UnityEngine;
 
 public class CarComtroller : MonoBehaviour
 {
-    public bool GameIsStarted;
-    public bool GameIsPaused;
-    public bool GameIsOver;
-
-
     private float _speed;
     private Rigidbody _rb;
     [SerializeField]
     private float _startSpeed;
+    [SerializeField]
+    private GameObject patr;
     //[SerializeField]
     //private GameObject _leftDot;
     //private Rigidbody _leftRb;
@@ -20,6 +17,7 @@ public class CarComtroller : MonoBehaviour
     //private GameObject _rightDot;
     //private Rigidbody _rightRb;
     private bool _isMoveBack;
+    private bool _speedIsZero;//sp1
     private Vector3 _startBackPos;
     private float timer = 1f;
     private float tempSpeed;
@@ -40,14 +38,20 @@ public class CarComtroller : MonoBehaviour
     {
         if (!GameManager.instance.GameIsPaused && GameManager.instance.GameIsStarted && !GameManager.instance.GameIsOver)
         {
+            _speedIsZero = false;
+            Debug.Log($"speed = {_speed} ts = {tempSpeed} ss = {_startSpeed}");
             _speed = tempSpeed;
             _angle = 90f;
         }
         else
         {
-            tempSpeed = _speed;
-            _speed = 0f;
-            _angle = 0f;
+            if (!_speedIsZero)
+            {
+                _speedIsZero = true;
+                tempSpeed = _speed;
+                _speed = 0f;
+                _angle = 0f;
+            }
         }
 
         if (transform.rotation.eulerAngles.y > 150 ||
@@ -62,7 +66,7 @@ public class CarComtroller : MonoBehaviour
 
         if (_isMoveBack && Vector3.Distance(transform.position, _startBackPos) > 5)
             GameManager.instance.GameIsOver = true;
-            
+
         if (GameManager.instance.TurnLeft)
         {
             transform.Rotate(0, -_angle, 0);
@@ -77,6 +81,10 @@ public class CarComtroller : MonoBehaviour
         }
         _speed += 0.01f;
         _rb.velocity = _speed * transform.forward;
+
+        if (GameManager.instance.GameIsOver)
+            patr.SetActive(true);
+           
     }
 
     private void FixedUpdate()
