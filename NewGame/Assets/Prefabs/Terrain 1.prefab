@@ -42,6 +42,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4843947633706741869}
   - component: {fileID: 3080865632555951906}
+  - component: {fileID: 4724735943621123124}
   m_Layer: 0
   m_Name: Collider1
   m_TagString: obstacle
@@ -76,6 +77,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 9.08094, y: 0.5982382, z: 0.38121605}
   m_Center: {x: 3.324541, y: -0.20088089, z: -0.30939198}
+--- !u!114 &4724735943621123124
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1837964938507329530}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13c06178ca01ebc41baceeff4faf922d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2278262283349230248
 GameObject:
   m_ObjectHideFlags: 0
@@ -87,7 +100,6 @@ GameObject:
   - component: {fileID: 9052974814123122227}
   - component: {fileID: 6325901277532247861}
   - component: {fileID: 1000375876916684263}
-  - component: {fileID: 1571061143838008060}
   m_Layer: 0
   m_Name: Terrain 1
   m_TagString: Road
@@ -139,18 +151,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
---- !u!114 &1571061143838008060
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2278262283349230248}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 13c06178ca01ebc41baceeff4faf922d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &4353098814366312616
 GameObject:
   m_ObjectHideFlags: 0
@@ -191,6 +191,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3592402684551230133}
   - component: {fileID: 9123171437347990226}
+  - component: {fileID: 6518028577630482975}
   m_Layer: 0
   m_Name: Collider2
   m_TagString: obstacle
@@ -225,6 +226,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 9.08094, y: 0.5982382, z: 0.38121605}
   m_Center: {x: 3.324541, y: -0.20088089, z: -0.30939198}
+--- !u!114 &6518028577630482975
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7479043551788061302}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13c06178ca01ebc41baceeff4faf922d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &4171817330145078010
 PrefabInstance:
   m_ObjectHideFlags: 0
