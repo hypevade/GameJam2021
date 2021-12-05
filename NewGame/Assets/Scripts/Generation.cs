@@ -22,6 +22,7 @@ public class Generation : MonoBehaviour
     void Start()
     {
         timer = startPause;
+        GenerateNext();
     }
 
     void FixedUpdate()
@@ -29,12 +30,12 @@ public class Generation : MonoBehaviour
         if (timer <= 0f)
         {
             timer = frequency;
-            GenerateNext();
+            //GenerateNext();
         }
         timer -= Time.deltaTime;
     }
 
-    void GenerateNext()
+    public void GenerateNext()
     {
         var flag = Random.Range(0, 2);
 
@@ -47,12 +48,12 @@ public class Generation : MonoBehaviour
         else
             temp.transform.GetChild(0).localScale = new Vector3(1, 1, 1);
         nextPos = temp.transform.GetChild(0).GetChild(8).position;
-        StartCoroutine(Delete(temp));
+        //StartCoroutine(Delete(temp));
     }
 
-    IEnumerator Delete(GameObject temp)
-    {
-        yield return new WaitForSeconds(_deleteTime);
-        Destroy(temp);
-    }
+    //IEnumerator Delete(GameObject temp)
+    //{
+    //    yield return new WaitForSeconds(_deleteTime);
+    //    Destroy(temp);
+    //}
 }
