@@ -27,7 +27,7 @@ public class TouchScript : MonoBehaviour
     {
         Count.text = GameManager.instance.CoinScore.ToString();
         CountShdow.text = Count.text;
-        print(GameManager.instance.CoinScore.ToString());
+
         if (GameManager.instance.GameIsOver == true)
         {
             GameOver();
@@ -36,11 +36,12 @@ public class TouchScript : MonoBehaviour
 
     public void StartGame()
     {
+        GameManager.instance.GameIsStarted = true;
         startButton.SetActive(false);
         StartPanelAnim.SetBool("GameStarted",true);
         gameButtons.SetActive(true);
         GamePanelAnim.SetBool("Resume",true);
-        GameManager.instance.GameIsStarted = true;
+        
     }
 
     public void StartPause()
