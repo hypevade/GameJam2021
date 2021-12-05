@@ -49,9 +49,9 @@ public class CarComtroller : MonoBehaviour
             {
                 _speedIsZero = true;
                 tempSpeed = _speed;
-                _speed = 0f;
                 _angle = 0f;
             }
+            _speed = 0f;
         }
 
         if (transform.rotation.eulerAngles.y > 150 ||

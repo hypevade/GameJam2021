@@ -277,7 +277,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GameIsOver: 0
-  GameIsStarted: 1
+  GameIsStarted: 0
   GameIsPaused: 0
   GameScore: 0
   CoinScore: 0
@@ -630,7 +630,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb260b64f94fea64fa5803f37d17d25c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _startSpeed: 5
+  _startSpeed: 4
   patr: {fileID: 215637166}
 --- !u!54 &852566917
 Rigidbody:
