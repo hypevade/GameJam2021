@@ -16,6 +16,7 @@ public class TouchScript : MonoBehaviour
 
     public Text Count;
     public Text CountShdow;
+    public Text CountScoreEnd;
 
     
 
@@ -25,10 +26,12 @@ public class TouchScript : MonoBehaviour
 
     private void Update()
     {
-        Count.text = GameManager.instance.CoinScore.ToString();
+        Count.text = GameManager.instance.GameScore.ToString();
         CountShdow.text = Count.text;
+        
+        
 
-        if (GameManager.instance.GameIsOver == true)
+        if (GameManager.instance.GameIsOver)
         {
             GameOver();
         }
@@ -79,6 +82,8 @@ public class TouchScript : MonoBehaviour
     public void GameOver()
     {
         gameOverPanel.SetActive(true);
+        CountScoreEnd.text = Count.text;
+
     }
     
     public void RestartGame()
