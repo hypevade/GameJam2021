@@ -6,38 +6,60 @@ using UnityEngine.UI;
 public class TouchScript : MonoBehaviour
 {
     public GameObject startButton;
-    public GameObject gamePanel;
+    public GameObject gameButtons;
     public GameObject pausePanel;
     public GameObject gameOverPanel;
 
     public Animator StartPanelAnim;
+    public Animator GamePanelAnim;
+    public Animator PausePanelAnim;
+
+    public Text Count;
+    public Text CountShdow;
+
+    
 
     public bool gameIsStarted;
     public bool gameIsPaused;
     public bool gameIsOver;
 
+    private void Update()
+    {
+        Count.text = GameManager.instance.CoinScore.ToString();
+        CountShdow.text = Count.text;
+        print(GameManager.instance.CoinScore.ToString());
+        if (GameManager.instance.GameIsOver == true)
+        {
+            GameOver();
+        }
+    }
 
     public void StartGame()
     {
         startButton.SetActive(false);
         StartPanelAnim.SetBool("GameStarted",true);
-        gamePanel.SetActive(true);
+        gameButtons.SetActive(true);
+        GamePanelAnim.SetBool("Resume",true);
         GameManager.instance.GameIsStarted = true;
     }
 
     public void StartPause()
     {
-        gamePanel.SetActive(false);
+        gameButtons.SetActive(false);
         pausePanel.SetActive(true);
+        GamePanelAnim.SetBool("Resume",false);
+        PausePanelAnim.SetBool("GoToPause",true);
         GameManager.instance.GameIsPaused = true;
 
     }
     
     public void EndPause()
     {
-        pausePanel.SetActive(false);
-        gamePanel.SetActive(true);
         GameManager.instance.GameIsPaused = false;
+        pausePanel.SetActive(false);
+        gameButtons.SetActive(true);
+        PausePanelAnim.SetBool("GoToPause",false);
+        GamePanelAnim.SetBool("Resume",true);
     }
 
     public void Turn(bool isRightTurn)
