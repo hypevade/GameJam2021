@@ -63,15 +63,17 @@ public class CarComtroller : MonoBehaviour
         if (_isMoveBack && Vector3.Distance(transform.position, _startBackPos) > 5)
             GameManager.instance.GameIsOver = true;
             
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        if (GameManager.instance.TurnLeft)
         {
             transform.Rotate(0, -_angle, 0);
             _rb.velocity = _speed * transform.forward;
+            GameManager.instance.TurnLeft = false;
         }
-        if (Input.GetKeyDown(KeyCode.RightArrow))
+        if (GameManager.instance.TurnRight)
         {
             transform.Rotate(0, _angle, 0);
             _rb.velocity = _speed * transform.forward;
+            GameManager.instance.TurnRight = false;
         }
         _speed += 0.00001f;
         _rb.velocity = _speed * transform.forward;
